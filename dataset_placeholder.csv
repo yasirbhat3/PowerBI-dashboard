@@ -1,0 +1,4 @@
+OrderID,OrderDate,CustomerID,Product,Quantity,SalesAmount
+1001,2024-01-01,CUST001,Product A,2,500
+1002,2024-01-02,CUST002,Product B,1,300
+1003,2024-01-05,CUST003,Product C,5,1200

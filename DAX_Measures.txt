@@ -1,0 +1,17 @@
+Total Sales = SUM(Orders[Sales])
+
+Total Profit = SUM(Orders[Profit])
+
+Profit Margin % = DIVIDE([Total Profit], [Total Sales], 0)
+
+Sales LY = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Calendar'[Date]))
+
+YoY Sales Growth % = DIVIDE([Total Sales] - [Sales LY], [Sales LY], 0)
+
+Sales YTD = TOTALYTD([Total Sales], 'Calendar'[Date])
+
+Cumulative Sales = CALCULATE([Total Sales], FILTER(ALL('Calendar'), 'Calendar'[Date] <= MAX('Calendar'[Date])))
+
+Rank Product by Sales = RANKX(ALL(Products[ProductName]), [Total Sales], , DESC, Dense)
+
+Is Loss Product = IF(SUM(Orders[Profit]) < 0, 1, 0)

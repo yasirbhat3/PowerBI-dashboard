@@ -1,0 +1,12 @@
+-- DAX Measures for Dashboard
+
+Total Sales = SUM(Sales[SalesAmount])
+
+Total Orders = COUNTROWS(Sales)
+
+Average Sales per Order = DIVIDE([Total Sales], [Total Orders])
+
+Sales Growth % = 
+VAR CurrentSales = [Total Sales]
+VAR PreviousSales = CALCULATE([Total Sales], DATEADD(Date[Date], -1, MONTH))
+RETURN DIVIDE(CurrentSales - PreviousSales, PreviousSales, 0)
